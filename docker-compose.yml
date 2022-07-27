@@ -32,7 +32,6 @@ services:
 
     # db mysql
     mysql:
-        container_name: especializati01-mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment:
@@ -43,10 +42,9 @@ services:
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
-            - "3388:3306"
+            - "3306:3306"
         networks:
             - laravel-9
-
     # queue
     queue:
         container_name: especializati01-queue
@@ -67,7 +65,8 @@ services:
         image: redis:latest
         networks:
             - laravel-9
-
+volumes:
+    mysqldb:
 networks:
     laravel-9:
         driver: bridge

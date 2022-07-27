@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('supports', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('course_id')->nullable(false);
-            $table->string('name');
+            $table->uuid('user_id')->nullable(false);
+            $table->uuid('lesson_id')->nullable(false);
+            $table->enum('status', ['P', 'A', 'C'])->default('P');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('supports');
     }
 };
