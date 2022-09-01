@@ -42,12 +42,12 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = config('app.url_frontend'). "/reset/{$this->token}";
+        $url = config('app.url_frontend') . "/reset/{$this->token}";
         return (new MailMessage)
-                    ->subject('Nova Senha')
-                    ->line('Você está recebendo este e-mail porque recebemos um pedido')
-                    ->action('Atualizar Senha', $url)
-                    ->line('Se você não solicitou uma alteração de senha, nehuma ação será feita');
+            ->subject('Nova Senha')
+            ->line('Você está recebendo este e-mail porque recebemos um pedido de redefinição de senha para sua conta.')
+            ->action('Resetar Senha', $url)
+            ->line('Se você não solicitou uma alteração da senha, nenhuma ação adicional é necessária.');
     }
 
     /**
